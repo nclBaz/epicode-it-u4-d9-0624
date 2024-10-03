@@ -1,6 +1,8 @@
 package riccardogulin;
 
 import com.github.javafaker.Faker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import riccardogulin.entities.User;
 
 import java.util.*;
@@ -8,6 +10,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class Application {
+	private static Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 		Supplier<User> usersSupplier = () -> {
@@ -107,5 +110,10 @@ public class Application {
 		System.out.println("5. Ottenimento di statistiche sulle età tramite mapToInt");
 		IntSummaryStatistics statistics = randomUsers.stream().mapToInt(user -> user.getAge()).summaryStatistics();
 		System.out.println(statistics);
+
+		// ******************************************* LOGBACK ***********************************
+		logger.info("CIAO");
+		logger.warn("Warning");
+		logger.error("Error");
 	}
 }
